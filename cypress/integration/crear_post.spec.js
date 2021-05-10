@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 import { CrearPostPage} from "../page-objects/crear-post-page"
+import config from '../config.js'
 
 
 describe('Crear post', () => {
@@ -14,15 +15,14 @@ describe('Crear post', () => {
 
     const tituloPost = "Ahora si que funciono esto"
     it('Crear un post 1',()=>{
-    
-      crearPostPage.login("andre0190@gmail.com","andres1503");
+      crearPostPage.login(config.email, config.password);
       crearPostPage.clickBotonCrearPost();
       crearPostPage.infoParaPost(tituloPost);
       //crearPostPage.clickBotonVolver();
     });
 
     it('Crear un post 2',()=>{
-      crearPostPage.login("andre0190@gmail.com","andres1503");
+      crearPostPage.login(config.email, config.password);
       crearPostPage.validarPostCreado(tituloPost);
       cy.wait(2000)
       
@@ -32,16 +32,15 @@ describe('Crear post', () => {
   context('Crear un post y publicarlo',()=>{
 
     const tituloPost = "Publicar este post"
-    it('Creo el post que voy a publicar',()=>{
-    
-      crearPostPage.login("andre0190@gmail.com","andres1503");
+    it('Creo el post que voy a publicar',()=>{   
+      crearPostPage.login(config.email, config.password);
       crearPostPage.clickBotonCrearPost();
       crearPostPage.infoParaPost(tituloPost);
       //crearPostPage.clickBotonVolver();
     });
 
-    it('Publico el post que cree',()=>{
-      crearPostPage.login("andre0190@gmail.com","andres1503");
+    it('Publico el post que cree',()=>{      
+      crearPostPage.login(config.email, config.password);
       crearPostPage.publicarPostCreado(tituloPost);
       cy.wait(2000)
       
@@ -51,16 +50,15 @@ describe('Crear post', () => {
   context('Publicar un post solo con acceso para miembros',()=>{
 
     const tituloPost = "Publicar este post"
-    it('Creo el post que voy a publicar',()=>{
-    
-      crearPostPage.login("andre0190@gmail.com","andres1503");
+    it('Creo el post que voy a publicar',()=>{   
+      crearPostPage.login(config.email, config.password);
       crearPostPage.clickBotonCrearPost();
       crearPostPage.infoParaPost(tituloPost);
       //crearPostPage.clickBotonVolver();
     });
 
-    it('Cambio el acceso y publico el post que cree',()=>{
-      crearPostPage.login("andre0190@gmail.com","andres1503");
+    it('Cambio el acceso y publico el post que cree',()=>{      
+      crearPostPage.login(config.email, config.password);
       crearPostPage.publicarPostAccessMembers(tituloPost);
       cy.wait(2000)
       

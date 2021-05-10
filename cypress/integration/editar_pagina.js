@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 import {Pagina} from "../page-objects/pagina"
+import config from '../config.js'
 
 
 describe('Editar página', () => {
@@ -16,27 +17,27 @@ describe('Editar página', () => {
     const edicion = " - Editada"
     const body = "Cuerpo del mensaje de prueba"
     it('Crear página',()=>{
-      pagina.login("as.santamaria@uniandes.edu.co","sucontraseña");
+      pagina.login(config.email, config.password);
       pagina.clickSeccionPages();
       pagina.clickBotonCrearPage();
       pagina.enterTituloPage(titulo);
     });
     
     it('Validar creación de página',()=>{
-      pagina.login("as.santamaria@uniandes.edu.co","sucontraseña");
+      pagina.login(config.email, config.password);
       pagina.clickSeccionPages();
       pagina.validarPageCreado(titulo);
     });
     
     it('Editar página',()=>{
-      pagina.login("as.santamaria@uniandes.edu.co","sucontraseña");
+      pagina.login(config.email, config.password);
       pagina.clickSeccionPages();
       pagina.clickPageCreada();
       pagina.enterTituloPage(edicion);
     });
 
     it('Validar edición de página',()=>{
-      pagina.login("as.santamaria@uniandes.edu.co","sucontraseña");
+      pagina.login(config.email, config.password);
       pagina.clickSeccionPages();
       pagina.validarPageCreado(titulo + edicion);
       pagina.clickPageCreada();
