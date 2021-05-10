@@ -4,6 +4,8 @@ Se debe tener corriendo localmente a ghost en la direccion http://localhost:2368
 
 Se debe abrir el proyecto con cypress
 
+Se debe modificar el archivo config.js con el email y la password del usuario administrador del ghost en ejecucion
+
 El entorno local de cypress debe configurarse acorde a la rubrica mencionada en la clase
 
 # Equipo
