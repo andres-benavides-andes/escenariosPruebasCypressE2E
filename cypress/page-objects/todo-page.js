@@ -6,10 +6,10 @@ export class TodoPage{
 
   login(username,password){
     cy.wait(2000)
-    cy.get('#ember8').type(username,{force: true});
-    cy.get('#ember10').type(password,{force: true});
+    cy.get("input[name='identification']").type(username,{force: true});
+    cy.get("input[name='password']").type(password,{force: true});
     this.clickBoton('.login',2000)
-    //cy.get('.login').click({force: true});
+
     cy.on('uncaught:exception', (err, runnable) => {
       return false
     });
@@ -21,7 +21,7 @@ export class TodoPage{
   }
 
   typeInElement(element,text){
-    cy.get(element).type(text);
+    cy.get(element).type(text,{force: true});
   }
 
  
