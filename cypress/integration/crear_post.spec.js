@@ -70,15 +70,34 @@ describe('Crear post', () => {
     const tituloPost = "Publicar este post"
     it('Creo el post que voy a publicar',()=>{
     
-      crearPostPage.login("andre0190@gmail.com","andres1503");
+      crearPostPage.login(config.email, config.password);
       crearPostPage.clickBotonCrearPost();
       crearPostPage.infoParaPost(tituloPost);
       //crearPostPage.clickBotonVolver();
     });
 
     it('ver el preview del post',()=>{
-      crearPostPage.login("andre0190@gmail.com","andres1503");
+      crearPostPage.login(config.email, config.password);
       crearPostPage.verPreviewDelPost(tituloPost);
+      cy.wait(2000)
+      
+    });
+  });
+
+  context('Programar publicación de un post :',()=>{
+
+    const tituloPost = "Publicar este post"
+    it('Creo el post que voy a publicar',()=>{
+    
+      crearPostPage.login(config.email, config.password);
+      crearPostPage.clickBotonCrearPost();
+      crearPostPage.infoParaPost(tituloPost);
+      //crearPostPage.clickBotonVolver();
+    });
+
+    it('Programo la publicacion del post',()=>{
+      crearPostPage.login(config.email, config.password);
+      crearPostPage.programarPostCreado(tituloPost);
       cy.wait(2000)
       
     });

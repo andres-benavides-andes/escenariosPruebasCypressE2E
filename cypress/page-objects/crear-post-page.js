@@ -75,4 +75,23 @@ export class CrearPostPage{
     
   }
 
+  programarPostCreado(tituloPost){
+    this.ultimoPostCreado(tituloPost);
+    cy.get('.gh-list-data.gh-post-list-title').first().click({force: true});
+    cy.wait(2000)
+    this.todoPage.clickBoton(".gh-publishmenu-trigger",1000)
+    cy.get(".gh-date-time-picker").then($pickers => {
+      var picker = $pickers.get(0);
+      if(!Cypress.dom.isHidden(picker)) {
+        cy.wrap(picker).click({force: true});
+      }
+    });
+    this.todoPage.clickBoton(".gh-publishmenu-button",3000)
+    cy.wait(2000)
+    cy.get('.gh-notification-title').should(($title) => {
+      expect($title.first()).to.contain("Scheduled");
+      
+    });
+  }
+
 }
