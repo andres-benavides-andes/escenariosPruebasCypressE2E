@@ -1,4 +1,4 @@
 export default {
-  "email": "suusuario",
-  "password": "sucontraseña"
+  "email": "jhon@example.com",
+  "password": "asdfw54665"
 }
