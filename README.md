@@ -19,63 +19,63 @@ El entorno local de cypress debe configurarse acorde a la rubrica mencionada en 
 # Funcionalidades Core
 ## Funcionalidad Asociar TAG
 ### Esenarios de prueba
-  Scenario: Associate a tag to a post
-    Given I log in ghost local app as an administrator with this user "<EMAIL>" and password "<PASSWORD>"<br/>
-    Then I create a tag with the name  "testtag", and the description "This is a sample tast"<br/>
-    Then I create a draf post with the title "My testing"<br/>
-    Then I associate the tag "testtag" with the post "My testing"<br/>
-    Then I validate that tag "testtag" is associate with the post "My testing"<br/>
-    Then I delete the post with the title "My testing"<br/>
-    Then I delete the tag with the slug "testtag"<br/>
-
-  Scenario: Associate 3 tags to a post
-    Given I log in ghost local app as an administrator with this user "<EMAIL>" and password "<PASSWORD>"<br/>
-    Then I create a tag with the name  "testtag1", and the description "This is the tag 1"<br/>
-    Then I create a tag with the name  "testtag2", and the description "This is the tag 2"<br/>
-    Then I create a tag with the name  "testtag3", and the description "This is the tag 3"<br/>
-    Then I create a draf post with the title "My testing 2"<br/>
-    Then I associate the tag "testtag1" with the post "My testing 2"<br/>
-    Then I associate the tag "testtag2" with the post "My testing 2"<br/>
-    Then I associate the tag "testtag3" with the post "My testing 2"<br/>
-    Then I validate that tag "testtag1" is associate with the post "My testing 2"<br/>
-    Then I validate that tag "testtag2" is associate with the post "My testing 2"<br/>
-    Then I validate that tag "testtag3" is associate with the post "My testing 2"<br/>
-    Then I delete the post with the title "My testing 2"<br/>
-    Then I delete the tag with the slug "testtag1"<br/>
-    Then I delete the tag with the slug "testtag2"<br/>
-    Then I delete the tag with the slug "testtag3"<br/>
-
-  Scenario: Detach a tag from a post
-    Given I log in ghost local app as an administrator with this user "<EMAIL>" and password "<PASSWORD>"<br/>
-    Then I create a tag with the name  "testtag", and the description "This is a sample tast"<br/>
-    Then I create a draf post with the title "My testing"<br/>
-    Then I associate the tag "testtag" with the post "My testing"<br/>
-    Then I detach the the last tag associated to the post "My testing"<br/>
-    Then I check that tag "testtag" don't have any post related<br/>
-    Then I delete the post with the title "My testing"<br/>
-    Then I delete the tag with the slug "testtag"<br/>
-
-  Scenario: Assosiate a tag to 2 posts
-    Given I log in ghost local app as an administrator with this user "<EMAIL>" and password "<PASSWORD>"<br/>
-    Then I create a tag with the name  "testtag", and the description "This is a sample tast"<br/>
-    Then I create a draf post with the title "My First Post"<br/>
-    Then I create a draf post with the title "My Second Post"<br/>
-    Then I associate the tag "testtag" with the post "My First Post"<br/>
-    Then I associate the tag "testtag" with the post "My Second Post"<br/>
-    Then I validate that tag "testtag" is associate with the post "My First Post"<br/>
-    Then I validate that tag "testtag" is associate with the post "My Second Post"<br/>
-    Then I delete the post with the title "My First Post"<br/>
-    Then I delete the post with the title "My Second Post"<br/>
-    Then I delete the tag with the slug "testtag"<br/>
-
-  Scenario: Associate a tag with a page
-    Given I log in ghost local app as an administrator with this user "<EMAIL>" and password "<PASSWORD>"<br/>
-    Then I create a tag with the name  "testtag", and the description "This is a sample tast"<br/>
-    Then I create a draf page with the title "My new Page"<br/>
-    Then I associate the tag "testtag" with the page "My new Page"<br/>
-    Then I validate that tag "testtag" is associate with a page<br/>
-    Then I delete the page with the title "My new Page"<br/>
-    Then I delete the tag with the slug "testtag"<br/>
+Esenario 1: Asociar un tag a un post:<br/>
+    1) Hago log in en la aplicacion ghost como administrador<br/>
+    2) Creo un tag con el nombre "testtag", y la descripcion "This is a sample tast"<br/>
+    3) Creo un post con el titulo "My testing"<br/>
+    4) Asocio el tag "testtag" con el post "My testing"<br/>
+    5) Valido la asociacion del tag "testtag" con el post "My testing"<br/>
+    6) Elimino el post con el título "My testing"<br/>
+    7) Elimino el tag con el nombre "testtag"<br/>
+<br/>
+Esenario 2: Asociar 3 tags a un post:<br/>
+    1) Hago log in en la aplicacion ghost como administrador<br/>
+    2) Creo un tag con el nombre "testtag1", y la descripcion "This is a sample tag 1"<br/>
+    3) Creo un tag con el nombre "testtag2", y la descripcion "This is a sample tag 2"<br/>
+    5) Creo un tag con el nombre "testtag3", y la descripcion "This is a sample tag 3"<br/>
+    6) Creo un post con el titulo "My testing 2"<br/>
+    7) Asocio el tag "testtag1" con el post "My testing 2"<br/>
+    8) Asocio el tag "testtag2" con el post "My testing 2"<br/>
+    9) Asocio el tag "testtag3" con el post "My testing 2"<br/>
+    10) Valido la asociacion del tag "testtag1" con el post "My testing 2"<br/>
+    11) Valido la asociacion del tag "testtag2" con el post "My testing 2"<br/>
+    12) Valido la asociacion del tag "testtag3" con el post "My testing 2"<br/>
+    13) Elimino el post con el título "My testing 2"<br/>
+    14) Elimino el tag con el nombre "testtag1"<br/>
+    15) Elimino el tag con el nombre "testtag2"<br/>
+    16) Elimino el tag con el nombre "testtag3"<br/>
+<br/>
+Esenario 3: Desasocio un tags de un post:<br/>
+    1) Hago log in en la aplicacion ghost como administrador<br/>
+    2) Creo un tag con el nombre "testtag", y la descripcion "This is a sample tast"<br/>
+    3) Creo un post con el titulo "My testing"<br/>
+    4) Asocio el tag "testtag" con el post "My testing"<br/>
+    5) Desasocio el tag "testtag" del post "My testing"<br/>
+    6) Valido que el tag "testtag" no esté relacionado con el post "My testing"<br/>
+    7) Elimino el post con el título "My testing"<br/>
+    8) Elimino el tag con el nombre "testtag"<br/>
+<br/>
+Esenario 4: Asocio un tag a 2 post:<br/>
+    1) Hago log in en la aplicacion ghost como administrador<br/>
+    2) Creo un tag con el nombre "testtag", y la descripcion "This is a sample tast"<br/>
+    3) Creo un post con el titulo "My First Post"<br/>
+    4) Creo un post con el titulo "My Second Post"<br/>
+    5) Asocio el tag "testtag" con el post "My First Post"<br/>
+    6) Asocio el tag "testtag" con el post "My Second Post"<br/>
+    7) Valido la asociacion del tag "testtag" con el post "My First Post"<br/>
+    8) Valido la asociacion del tag "testtag" con el post "My Second Post"<br/>
+    9) Elimino el post con el título "My First Post"<br/>
+    10) Elimino el post con el título "My Second Post"<br/>
+    11) Elimino el tag con el nombre "testtag"<br/>
+<br/>
+Esenario 5: Asocio un tag a una página:<br/>
+    1) Hago log in en la aplicacion ghost como administrador<br/>
+    2) Creo un tag con el nombre "testtag", y la descripcion "This is a sample tast"<br/>
+    3) Creo una página con el titulo "My new page"<br/>
+    4) Asocio el tag "testtag" con la página "My new page"<br/>
+    5) Valido la asociacion del tag "testtag" con la página "My new page"<br/>
+    6) Elimino la página con el título "My new page"<br/>
+    7) Elimino el tag con el nombre "testtag"<br/>
   
 ## Funcionalidades Crear, Editar, Eliminar Página
 ### Esenarios de prueba
