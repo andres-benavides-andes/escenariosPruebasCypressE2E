@@ -4,13 +4,15 @@ import config from '../config.js'
 
 describe('Crear página', () => {
   const pagina = new Pagina()
+  const scenario = 'Crear una página'
 
   beforeEach(() => {
+    pagina.setScenario(scenario);
     pagina.navigate();
   });
 
 
-  context('Crear una página',()=>{
+  context(scenario,()=>{
 
     const titulo = "Creación de página con Cypress"
     const body = "Cuerpo del mensaje de prueba"
