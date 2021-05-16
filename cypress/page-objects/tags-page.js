@@ -1,8 +1,21 @@
 export class GhostTester{
-    constructor(email, password, startUrl){
+    constructor(email, password, startUrl, dateObject){
         this.email = email;
         this.password = password;
         this.startUrl = startUrl;
+        this.dateObject = dateObject;
+    }
+
+    setScenario(newScenario){
+        this.scenario = newScenario;
+    }
+
+    setStepDescription(stepDescription){
+        this.stepDescription = stepDescription;
+    }
+
+    setStep(step){
+        this.step = step;
     }
 
     initNavigation(){
@@ -31,12 +44,16 @@ export class GhostTester{
     createAPost(postTitle){
         cy.get('a[href="#/editor/post/"]').first().click({force: true});
         cy.get('textarea[placeholder="Post Title"]').focus().type(postTitle);
+        this.setStepDescription("create-post");
+        this.takeScreenshot();
         cy.get('div[data-placeholder="Begin writing your post..."]').focus();
     }
 
     createAPage(pageTitle){
         cy.get('a[href="#/editor/page/"]').first().click({force: true});
         cy.get('textarea[placeholder="Page Title"]').focus().type(pageTitle);
+        this.setStepDescription("create-page");
+        this.takeScreenshot();
         cy.get('div[data-placeholder="Begin writing your page..."]').focus();
     }
 
@@ -56,17 +73,23 @@ export class GhostTester{
     associatedTagToPost(tagName){
         cy.get('button.post-settings').click();
         cy.get('#tag-input').focus().type(tagName + '{enter}');
+        this.setStepDescription("associate-tag");
+        this.takeScreenshot();
         cy.get('button.close').click();
     }
 
     detachLastTagFromPost(){
         cy.get('button.post-settings').click();
         cy.get('#tag-input').focus().type('{backspace}');
+        this.setStepDescription("detach-tag");
+        this.takeScreenshot();
         cy.get('button.close').click();
     }
 
     checkTagDontHavePostsRelated(tagSlug){
         cy.get(`a.gh-tag-list-posts-count[href="#/tags/${tagSlug}/"] > span`).should('have.text','0 posts');
+        this.setStepDescription("no-related-tag");
+        this.takeScreenshot();
     }
 
 
@@ -75,6 +98,8 @@ export class GhostTester{
         cy.get('#tag-name').focus().type(tagName);
         cy.get('#tag-slug').focus().clear().type(tagSlug.toLowerCase());
         cy.get('#tag-description').focus().type(tagDescription);
+        this.setStepDescription("create-tag");
+        this.takeScreenshot();
         cy.get('button[class="gh-btn gh-btn-blue gh-btn-icon ember-view"]').click();
     }
 
@@ -82,20 +107,32 @@ export class GhostTester{
         cy.get(`a[href="#/tags/${tagSlug.toLowerCase()}/"]`).first().click({force: true});
         cy.get('button[class="gh-btn gh-btn-red gh-btn-icon mb15"]').click()
         cy.get('button[class="gh-btn gh-btn-red gh-btn-icon ember-view"]').first().click()
+        this.setStepDescription("remove-tag");
+        this.takeScreenshot();
     }
 
     validateTagAssociation(tagName, postTitle){
         cy.get(`a[title="List posts tagged with '${tagName}'"]`).click({force: true});
         cy.contains(postTitle);
+        this.setStepDescription("validate-tag-association");
+        this.takeScreenshot();
     }
 
     validateTagAssociationWithPage(tagName){
         cy.get(`a[title="List posts tagged with '${tagName}'"] > span`).should('have.text','1 post');
+        this.setStepDescription("validate-tag-association");
+        this.takeScreenshot();
     }
 
     removePost(){
         cy.get('button.post-settings').click();
         cy.get('button.settings-menu-delete-button').click();
         cy.get('button[class="gh-btn gh-btn-red gh-btn-icon ember-view"]').first().click();
+        this.setStepDescription("remove-post-or-page");
+        this.takeScreenshot();
+    }
+
+    takeScreenshot(){
+        cy.screenshot(`./${this.dateObject}/${this.scenario}/${this.step}-${this.stepDescription}`);
     }
 }
