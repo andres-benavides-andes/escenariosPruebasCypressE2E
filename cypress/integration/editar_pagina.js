@@ -5,13 +5,15 @@ import config from '../config.js'
 
 describe('Editar página', () => {
   const pagina = new Pagina()
+  const scenario = 'Editar una página'
 
   beforeEach(() => {
+    pagina.setScenario(scenario);
     pagina.navigate();
   });
 
 
-  context('Editar una página',()=>{
+  context(scenario,()=>{
 
     const titulo = "Crear una página con Cypress para luego editarla"
     const edicion = " - Editada"

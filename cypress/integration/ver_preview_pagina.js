@@ -4,13 +4,15 @@ import config from '../config.js'
 
 describe('Ver preview de página', () => {
   const pagina = new Pagina()
+  const scenario = 'Ver preview de una página'
 
   beforeEach(() => {
+    pagina.setScenario(scenario);
     pagina.navigate();
   });
 
 
-  context('Ver preview de una página',()=>{
+  context(scenario,()=>{
 
     const titulo = "Ver preview de una página con Cypress"
     const body = "Cuerpo del mensaje de prueba"

@@ -1,3 +1,4 @@
 {
-  "chromeWebSecurity": false
+  "chromeWebSecurity": false,
+  "screenshotsFolder": "tvr/3.3.0"
 }

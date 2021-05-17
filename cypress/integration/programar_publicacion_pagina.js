@@ -5,13 +5,15 @@ import config from '../config.js'
 
 describe('Programar publicación de página', () => {
   const pagina = new Pagina()
+  const scenario = 'Programar publicación de una página'
 
   beforeEach(() => {
+    pagina.setScenario(scenario);
     pagina.navigate();
   });
 
 
-  context('Programar publicación de una página',()=>{
+  context(scenario,()=>{
 
     const titulo = "Programar publicación de una página con Cypress"
     const body = "Cuerpo del mensaje de prueba"
