@@ -10,6 +10,10 @@ export class EditPostPage {
     this.scenario = newScenario;
   }
 
+  setStep(step) {
+    this.step = step;
+  }
+
   callScreenshot() {
     this.step++;
     this.todoPage.takeScreenshot(this.scenario, this.step);

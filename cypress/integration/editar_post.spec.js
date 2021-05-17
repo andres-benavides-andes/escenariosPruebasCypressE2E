@@ -4,15 +4,15 @@ import config from "../config.js";
 
 describe("Editar post", () => {
   const editarPostPage = new EditPostPage();
-  const scenario = "Editar post";
+  editarPostPage.setScenario("editar_post");
 
   beforeEach(() => {
-    editarPostPage.setScenario(scenario);
     editarPostPage.navigate();
   });
 
   const tituloPost = "Post editado en Cypress";
-  it("Editar un post 1", () => {
+  it("Editar un post", () => {
+    editarPostPage.setScenario("editar_post");
     editarPostPage.login(config.email, config.password);
     editarPostPage.clickSeccionPosts();
     editarPostPage.getOnePost();
@@ -22,7 +22,9 @@ describe("Editar post", () => {
     editarPostPage.clickBotonVolver();
   });
 
-  it("Despublicar un post 1", () => {
+  it("Despublicar un post", () => {
+    editarPostPage.setStep(0);
+    editarPostPage.setScenario("despublicar_post");
     editarPostPage.login(config.email, config.password);
     editarPostPage.clickSeccionPosts();
     editarPostPage.getOnePost();
@@ -33,6 +35,8 @@ describe("Editar post", () => {
   });
 
   it("Editar el excerpt de un post", () => {
+    editarPostPage.setStep(0);
+    editarPostPage.setScenario("editar_excerpt_post");
     editarPostPage.login(config.email, config.password);
     editarPostPage.clickSeccionPosts();
     editarPostPage.getOnePost();
@@ -43,6 +47,8 @@ describe("Editar post", () => {
   });
 
   it("Editar la url de un post", () => {
+    editarPostPage.setStep(0);
+    editarPostPage.setScenario("editar_url_post");
     editarPostPage.login(config.email, config.password);
     editarPostPage.clickSeccionPosts();
     editarPostPage.getOnePost();
@@ -52,7 +58,9 @@ describe("Editar post", () => {
     editarPostPage.clickBotonVolver();
   });
 
-  it("Editar la url de un post", () => {
+  it("Eliminar post", () => {
+    editarPostPage.setStep(0);
+    editarPostPage.setScenario("eliminar_post");
     editarPostPage.login(config.email, config.password);
     editarPostPage.clickSeccionPosts();
     editarPostPage.getOnePost();
