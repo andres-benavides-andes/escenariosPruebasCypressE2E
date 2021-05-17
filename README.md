@@ -6,6 +6,7 @@ Issues:  [aquí](https://github.com/andres-benavides-andes/escenariosPruebasE2E/
 
 Notas: 
 - Ejecutar los pasos en el orden mencionado
+- No hubo necesidad de crear dos archivos para pruebas entre versiones porque con las modificaciones realizadas, quedaron funcionando para las dos versiones.
 - Antes de ejecutar la toma de fotos de las versiones, ingrese a Ghost y cierre la recomendación de actualización que se muestra en la parte superior.
 
 ## 1. Toma de fotos Ghost 3.3.0
