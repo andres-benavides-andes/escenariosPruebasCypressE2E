@@ -1,6 +1,8 @@
 # Requerimientos de ejecucion
 
-Issues:  https://github.com/andres-benavides-andes/escenariosPruebasE2E/issues
+
+Issues:  [aquí](https://github.com/andres-benavides-andes/escenariosPruebasE2E/issues)
+<br>Pros y contras: [aquí](https://github.com/andres-benavides-andes/escenariosPruebasE2E/wiki/An%C3%A1lisis-de-ventajas-y-desventajas-de-las-herramientas-BackstopJS-y-ResembleJS)
 
 Notas: 
 - Ejecutar los pasos en el orden mencionado
