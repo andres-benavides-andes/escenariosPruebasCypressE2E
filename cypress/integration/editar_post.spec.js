@@ -4,8 +4,10 @@ import config from "../config.js";
 
 describe("Editar post", () => {
   const editarPostPage = new EditPostPage();
+  const scenario = "Editar post";
 
   beforeEach(() => {
+    editarPostPage.setScenario(scenario);
     editarPostPage.navigate();
   });
 
