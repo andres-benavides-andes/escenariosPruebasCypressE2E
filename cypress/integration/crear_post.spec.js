@@ -12,12 +12,12 @@ describe('Crear post', () => {
 
 
   context('Crear un post y volver a la pagina de posts',()=>{
-
+    crearPostPage.setScenario("Crear un post y volver a la pagina de posts");
     const tituloPost = "Ahora si que funciono esto"
     it('Crear un post 1',()=>{
       crearPostPage.login(config.email, config.password);
-      crearPostPage.clickBotonCrearPost();
-      crearPostPage.infoParaPost(tituloPost);
+      //crearPostPage.clickBotonCrearPost();
+      ///crearPostPage.infoParaPost(tituloPost);
       //crearPostPage.clickBotonVolver();
     });
 
@@ -30,7 +30,7 @@ describe('Crear post', () => {
   });
 
   context('Crear un post y publicarlo',()=>{
-
+    crearPostPage.setScenario("Crear un post y publicarlo");
     const tituloPost = "Publicar este post"
     it('Creo el post que voy a publicar',()=>{   
       crearPostPage.login(config.email, config.password);
@@ -47,8 +47,8 @@ describe('Crear post', () => {
     });
   });
 
-  context('Publicar un post solo con acceso para miembros',()=>{
-
+  context('Publicar un post con texto en Expert',()=>{
+    crearPostPage.setScenario("Publicar un post con texto en Expert");
     const tituloPost = "Publicar este post"
     it('Creo el post que voy a publicar',()=>{   
       crearPostPage.login(config.email, config.password);
@@ -66,7 +66,7 @@ describe('Crear post', () => {
   });
 
   context('Ver preview del post',()=>{
-
+    crearPostPage.setScenario("Ver preview del post");
     const tituloPost = "Publicar este post"
     it('Creo el post que voy a publicar',()=>{
     
@@ -84,8 +84,8 @@ describe('Crear post', () => {
     });
   });
 
-  context('Programar publicación de un post :',()=>{
-
+  context('Programar publicación de un post',()=>{
+    crearPostPage.setScenario("Programar publicación de un post");
     const tituloPost = "Publicar este post"
     it('Creo el post que voy a publicar',()=>{
     

@@ -3,18 +3,33 @@ export class CrearPostPage{
   
   constructor(){
     this.todoPage = new TodoPage();
+    this.step = 0;
+  }
+  
+  setScenario(newScenario){
+    this.scenario = newScenario;
+  }
+
+  callScreenshot(){
+    this.todoPage.takeScreenshot(this.scenario, this.step);
   }
 
   navigate(){
     cy.visit("http://localhost:2368/ghost/#/signin")
+    this.callScreenshot();
   }
 
   login(username,password){
-    this.todoPage.login(username,password);
+    this.step++;
+    this.todoPage.login(username,password, this.scenario, this.step);
+    this.step = this.step+2;
   }
 
+
+
   clickBotonCrearPost(){
-    this.todoPage.clickBoton("a[title='New post']",1000)
+    this.todoPage.clickBoton(".gh-nav-new-post",1000)
+    this.callScreenshot();
   }
 
   infoParaPost(postTitle,postBody){
@@ -25,6 +40,7 @@ export class CrearPostPage{
 
   clickBotonVolver(){
     this.todoPage.clickBoton(".gh-editor-back-button",1000)
+    this.callScreenshot();
   }
 
   ultimoPostCreado(tituloPost){
@@ -33,18 +49,20 @@ export class CrearPostPage{
     cy.get('.gh-list-data.gh-post-list-title h3').should(($title) => {
       expect($title.first()).to.contain(tituloPost);
     });
+    this.callScreenshot();
   }
   
   publicarPost(){
     
     cy.wait(2000)
-    this.todoPage.clickBoton('.gh-publishmenu .gh-btn-editor',0)
+    this.todoPage.clickBoton('.gh-publishmenu .gh-publishmenu-trigger',0)
     this.todoPage.clickBoton('.gh-publishmenu-button',0)
     cy.wait(2000)
-    cy.get('.gh-notification-title').should(($title) => {
+    cy.get('.gh-publishmenu-button span').should(($title) => {
       expect($title.first()).to.contain("Published");
       
     });
+    this.callScreenshot();
   }
 
   validarPostCreado(tituloPost){
@@ -61,25 +79,32 @@ export class CrearPostPage{
     this.ultimoPostCreado(tituloPost);
     cy.get('.gh-list-data.gh-post-list-title').first().click({force: true});
     cy.wait(1000);
-    this.todoPage.clickBoton('.gh-actions-cog',500);
-    cy.get('.gh-select select').select('members');
-    this.todoPage.clickBoton('.settings-menu-header-action',500);
+    this.callScreenshot();
+    this.todoPage.clickBoton('.post-settings',500);
+    cy.get('.post-setting-custom-excerpt').type('Texto para Expert');
+    this.callScreenshot();
+    this.todoPage.clickBoton('.close.settings-menu-header-action',500);
     this.publicarPost();
   }
 
   verPreviewDelPost(tituloPost){
     this.ultimoPostCreado(tituloPost);
     cy.get('.gh-list-data.gh-post-list-title').first().click({force: true});
+    this.callScreenshot();
     cy.wait(1000);
-    this.todoPage.clickBoton('.gh-editor-preview-trigger',2000);
+    this.todoPage.clickBoton('.post-settings',500);
+    this.callScreenshot();
+    this.todoPage.clickBoton('.post-view-link',2000);
     
   }
 
   programarPostCreado(tituloPost){
     this.ultimoPostCreado(tituloPost);
+    this.callScreenshot();
     cy.get('.gh-list-data.gh-post-list-title').first().click({force: true});
     cy.wait(2000)
     this.todoPage.clickBoton(".gh-publishmenu-trigger",1000)
+    this.callScreenshot();
     cy.get(".gh-date-time-picker").then($pickers => {
       var picker = $pickers.get(0);
       if(!Cypress.dom.isHidden(picker)) {
@@ -88,7 +113,8 @@ export class CrearPostPage{
     });
     this.todoPage.clickBoton(".gh-publishmenu-button",3000)
     cy.wait(2000)
-    cy.get('.gh-notification-title').should(($title) => {
+    this.callScreenshot();
+    cy.get('.gh-publishmenu-button span').should(($title) => {
       expect($title.first()).to.contain("Scheduled");
       
     });
