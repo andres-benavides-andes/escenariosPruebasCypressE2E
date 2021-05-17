@@ -1,14 +1,70 @@
 # Requerimientos de ejecucion
 
-Se debe tener corriendo localmente a ghost en la direccion http://localhost:2368/
+Issues:  https://github.com/andres-benavides-andes/escenariosPruebasE2E/issues
+
+Notas: 
+- Ejecutar los pasos en el orden mencionado
+- Antes de ejecutar la toma de fotos de las versiones, ingrese a Ghost y cierre la recomendación de actualización que se muestra en la parte superior.
+
+## 1. Toma de fotos Ghost 3.3.0
+
+Se debe tener corriendo localmente a ghost con la versión 3.3.0 en la direccion http://localhost:2368/
+
+Se debe modificar el archivo ./cypress/config.js con el email y la password del usuario administrador del ghost en ejecucion
+
+Se debe modificar el archivo ./cypress.json con el atributo "screenshotsFolder": "tvr/3.3.0"
+
+El entorno local de cypress debe configurarse acorde a la rubrica mencionada en la clase
 
 Se debe abrir el proyecto con cypress
 
-Los esenarios de prueba a correr se encuentran en la carpete ./cypress/integration/
+Los esenarios de prueba a correr se encuentran en la carpeta ./cypress/integration/
 
-Se debe modificar el archivo ./cypress/config.js con el "email" y la "password" del usuario administrador del ghost en ejecucion
+Ejecutar el comando ghost stop
+
+Ir a la raíz del repo y en la carpeta tvr/3.3.0 estarán las fotos de los pasos de las pruebas por escenario
+
+## 2. Toma de fotos Ghost 3.42.5
+
+Se debe tener corriendo localmente a ghost con la versión 3.42.5 en la direccion http://localhost:2368/
+
+Se debe modificar el archivo ./cypress/config.js con el email y la password del usuario administrador del ghost en ejecucion
+
+Se debe modificar el archivo ./cypress.json con el atributo "screenshotsFolder": "tvr/3.42.5"
 
 El entorno local de cypress debe configurarse acorde a la rubrica mencionada en la clase
+
+Se debe abrir el proyecto con cypress
+
+Los esenarios de prueba a correr se encuentran en la carpeta ./cypress/integration/
+
+Ejecutar el comando ghost stop
+
+Ir a la raíz del repo y en la carpeta tvr/3.42.5 estarán las fotos de los pasos de las pruebas por escenario
+
+## 3. Comaparación con resemble
+
+Estando en la raíz del repo, ingresar a la carpeta resemble
+
+El entorno local de resemble debe configurarse acorde a la rubrica mencionada en la clase
+
+Ejecutar el comando npm i para instalar dependencias
+
+Ejecutar el comando node index.js
+
+Ir a la raíz del repo y en la carpeta tvr/result estarán las fotos de comparación y el reporte html generado automáticamente
+
+## 4. Comaparación con backstop
+
+Estando en la raíz del repo, ingresar a la carpeta backstop
+
+El entorno local de backstop debe configurarse acorde a la rubrica mencionada en la clase
+
+Ejecutar el comando backstop reference
+
+Ejecutar el comando backstop test, este abrira el reporte html generado por la herramienta
+
+
 
 # Equipo
 
