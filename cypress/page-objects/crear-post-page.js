@@ -34,7 +34,7 @@ export class CrearPostPage{
 
   infoParaPost(postTitle,postBody){
     this.todoPage.typeInElement(".gh-editor-title",postTitle);
-    this.todoPage.clickBoton("body",0)
+    this.todoPage.clickBoton("body",10)
     
   }
 
@@ -116,6 +116,28 @@ export class CrearPostPage{
     this.callScreenshot();
     cy.get('.gh-publishmenu-button span').should(($title) => {
       expect($title.first()).to.contain("Scheduled");
+      
+    });
+  }
+
+  getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  cambiarUrl(newUrl){
+    cy.get("a[href='#/posts/']").first().click();
+    cy.wait(1000)
+    cy.get('.gh-list-data.gh-post-list-title').first().click({force: true});
+    cy.wait(1000);
+    this.todoPage.clickBoton('.post-settings',500);
+    cy.get("input[name='post-setting-slug']").clear();
+    cy.get("input[name='post-setting-slug']").type(newUrl);
+    this.todoPage.clickBoton('.ghost-url-preview',500)
+
+    cy.get('.ghost-url-preview').should(($slug) => {
+      expect($slug).to.contain(newUrl);
       
     });
   }

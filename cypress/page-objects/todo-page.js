@@ -21,7 +21,7 @@ export class TodoPage{
     this.takeScreenshot(scenario, step);
     
     this.clickBoton('.login',2000)
-    cy.wait(3000)
+    cy.wait(9000)
     step++;
     this.takeScreenshot(scenario, step);
 
@@ -40,6 +40,6 @@ export class TodoPage{
   }
 
   takeScreenshot(scenario, step){
-    cy.screenshot(`${scenario}_${step}`);
+    //cy.screenshot(`${scenario}_${step}`);
   }
 }

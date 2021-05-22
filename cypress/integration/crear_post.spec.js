@@ -13,11 +13,11 @@ describe('Crear post', () => {
 
   context('Crear un post y volver a la pagina de posts',()=>{
     crearPostPage.setScenario("Crear un post y volver a la pagina de posts");
-    const tituloPost = "Ahora si que funciono esto"
+    const tituloPost = "Crear este post sin publicarlo"
     it('Crear un post 1',()=>{
       crearPostPage.login(config.email, config.password);
-      //crearPostPage.clickBotonCrearPost();
-      ///crearPostPage.infoParaPost(tituloPost);
+      crearPostPage.clickBotonCrearPost();
+      crearPostPage.infoParaPost(tituloPost);
       //crearPostPage.clickBotonVolver();
     });
 
