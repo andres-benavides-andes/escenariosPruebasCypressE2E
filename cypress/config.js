@@ -1,4 +1,4 @@
 export default {
-  "email": "as.santamaria@uniandes.edu.co",
-  "password": "sucontraseña"
+  "email": "jhon@example.com",
+  "password": "asdfw54665",
 }

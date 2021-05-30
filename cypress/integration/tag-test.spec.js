@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import {GhostTester} from '../page-object/tags-page';
+import {GhostTester} from '../page-objects/tags-page';
 import config from '../config'
 
 context('Checking tag association functionality...', () => {
@@ -64,7 +64,7 @@ context('Checking tag association functionality...', () => {
     });
     
     describe(`Scenario 2: ${$scenari2}`, ()=> {
-        let testTags = ['testtag1', 'testtag2', 'testtag3'];
+        let testTags = ['01mytesttag', '02mytesttag', '03mytesttag'];
         let tagSlugs = testTags;
         let testTagDescriptions = ['Description for testtag-1', 'Description for testtag-2', 'Description for testtag-3'];
         let postTitle = 'My testting 2'

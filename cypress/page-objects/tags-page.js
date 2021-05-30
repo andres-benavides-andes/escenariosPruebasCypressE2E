@@ -23,22 +23,27 @@ export class GhostTester{
         cy.get('input[name="identification"]').focus().type(this.email);
         cy.get('input[name="password"]').focus().type(this.password);
         cy.get('button[type="submit"]').click();
+        cy.wait(1000);
     }
 
     selectTagsFromManageMenu(){
         cy.get('a[href="#/tags/"]').first().click({force: true});
+        cy.wait(1000);
     }
 
     selectPostsfromManageMenu(){
         cy.get('a[href="#/posts/"]').first().click({force: true});
+        cy.wait(1000);
     }
 
     selectPagesFromManageMenu(){
         cy.get('a[href="#/pages/"]').first().click({force: true});
+        cy.wait(1000);
     }
 
     createAPost(postTitle){
         cy.get('a[href="#/editor/post/"]').first().click({force: true});
+        cy.wait(1000);
         cy.get('textarea[placeholder="Post Title"]').focus().type(postTitle);
         this.takeScreenshot();
         cy.get('div[data-placeholder="Begin writing your post..."]').focus();
@@ -46,6 +51,7 @@ export class GhostTester{
 
     createAPage(pageTitle){
         cy.get('a[href="#/editor/page/"]').first().click({force: true});
+        cy.wait(1000);
         cy.get('textarea[placeholder="Page Title"]').focus().type(pageTitle);
         this.takeScreenshot();
         cy.get('div[data-placeholder="Begin writing your page..."]').focus();
@@ -86,6 +92,7 @@ export class GhostTester{
 
     createNewTag(tagName, tagSlug,tagDescription){
         cy.get('a[href="#/tags/new/"]').click({force: true});
+        cy.wait(1000);
         cy.get('#tag-name').focus().type(tagName);
         cy.get('#tag-slug').focus().clear().type(tagSlug.toLowerCase());
         cy.get('#tag-description').focus().type(tagDescription);
