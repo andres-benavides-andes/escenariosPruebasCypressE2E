@@ -2,7 +2,7 @@ const compareImages = require("resemblejs/compareImages")
 const config = require("./config.json");
 const fs = require('fs');
 
-const { options } = config;
+const { options, maxMisMatchAllowed } = config;
 
 resultInfoAllCases = [];
 
@@ -77,10 +77,15 @@ async function executeTest(){
 (async ()=>console.log(await executeTest()))();
 
 function singleStep(info){
-    return `<div class=" browser">
+    let result =  `<div class=" browser">
     <div class=" btitle">
-        <h3>Comparing: ${info.file}</h3>
-        <p>Data: ${JSON.stringify(info.process)}</p>
+        <h3>Comparing: ${info.file}</h3>`;
+        if(info.process.misMatchPercentage >= maxMisMatchAllowed)
+        result += `<p class="failed-test"> FAILED | `;
+        else 
+        result += `<p class="success-test"> SUCCESS | `;
+
+    result += `Data: ${JSON.stringify(info.process)}</p>
     </div>
     <div class="imgline">
       <div class="imgcontainer">
@@ -97,6 +102,7 @@ function singleStep(info){
       </div>
     </div>
   </div>`
+  return result;
 }
 
 function createReport(resultInfoAllCases){

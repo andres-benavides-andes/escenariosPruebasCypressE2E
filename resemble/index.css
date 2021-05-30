@@ -45,3 +45,12 @@
 .imgfull{
     width:100%
 }
+.failed-test{
+    background-color: red;
+    color:white;
+}
+
+.success-test{
+    background-color: green;
+    color: white;
+}
