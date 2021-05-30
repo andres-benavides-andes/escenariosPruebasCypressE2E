@@ -40,6 +40,6 @@ export class TodoPage{
   }
 
   takeScreenshot(scenario, step){
-    //cy.screenshot(`${scenario}_${step}`);
+    cy.screenshot(`${scenario}_${step}`);
   }
 }
